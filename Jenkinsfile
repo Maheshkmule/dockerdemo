@@ -4,14 +4,13 @@ pipeline {
         stage('Build Maven'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Maheshkmule/dockerdemo.git']]])
-                bat 'mvn compile'
+              
             }
         }
         stage('Build docker image'){
             steps{
                 script{
-                   
-                    bat 'docker build -t maheshmule/dockerdemo .'
+                    dockerimage='docker build -t maheshmule/dockerdemo .'
                 }
             }
         }
