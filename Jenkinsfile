@@ -4,14 +4,14 @@ pipeline {
         stage('Build Maven'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Maheshkmule/dockerdemo.git']]])
-                
+                bat 'mvn compile'
             }
         }
         stage('Build docker image'){
             steps{
                 script{
                    
-                    sh 'docker build -t maheshmule/dockerdemo .'
+                    bat 'docker build -t maheshmule/dockerdemo .'
                 }
             }
         }
@@ -19,10 +19,10 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u maheshmule -p ${dockerhubpwd}'
+                   bat 'docker login -u maheshmule -p ${dockerhubpwd}'
 
 }
-                   sh 'docker push maheshmule/dockerdemo'
+                   bat 'docker push maheshmule/dockerdemo'
                 }
             }
          }
