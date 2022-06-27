@@ -10,6 +10,8 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
+                    bat 'export DOCKER_BUILDKIT=0'
+                    bat 'export COMPOSE_DOCKER_CLI_BUILD=0'
                     bat 'docker build -t maheshmule/dockerdemo .'
                 }
             }
