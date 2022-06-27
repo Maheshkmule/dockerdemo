@@ -11,7 +11,7 @@ pipeline {
             steps{
                 script{
                    
-                    bat 'docker build -t maheshmule/dockerdemo .'
+                    sh 'docker build -t maheshmule/dockerdemo .'
                 }
             }
         }
@@ -19,10 +19,10 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
-                   bat 'docker login -u maheshmule -p ${dockerhubpwd}'
+                   sh 'docker login -u maheshmule -p ${dockerhubpwd}'
 
 }
-                   bat 'docker push maheshmule/dockerdemo'
+                   sh 'docker push maheshmule/dockerdemo'
                 }
             }
          }
