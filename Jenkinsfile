@@ -1,11 +1,10 @@
 pipeline {
-    agent any{
-  
+    agent any
     stages{
         stage('Build Maven'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Maheshkmule/dockerdemo.git']]])
-                bat 'mvn clean install'
+                bat 'mvn install'
             }
         }
         stage('Build docker image'){
@@ -27,5 +26,5 @@ pipeline {
             }
          }
       }
-   }
+   
 }
