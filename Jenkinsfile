@@ -10,7 +10,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    dockerimage='docker build -t maheshmule/dockerdemo .'
+                    dockerimage='docker build -t maheshmule/dockerdemo1 .'
                 }
             }
         }
@@ -21,7 +21,7 @@ pipeline {
                    bat 'docker login -u maheshmule -p ${dockerhub}'
 
 }
-                   bat 'docker push maheshmule/dockerdemo'
+                   bat 'docker push maheshmule/dockerdemo1'
                 }
             }
          }
