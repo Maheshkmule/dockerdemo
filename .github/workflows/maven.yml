@@ -37,9 +37,9 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/java-app:latest .
+        docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/github-action:latest .
         docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_TOKEN }}
-        docker push ${{ secrets.DOCKER_HUB_USERNAME }}/java-app:latest
+        docker push ${{ secrets.DOCKER_HUB_USERNAME }}/github-action:latest
       env:
         DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
         DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
