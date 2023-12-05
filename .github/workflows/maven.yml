@@ -29,12 +29,6 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Set up Docker
-      uses: actions/setup-docker@v2
-      with:
-        dockerfile: ./Dockerfile
-        container-name: github-action
-
     - name: Build and Push Docker Image
       run: |
         docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/github-action:latest .
