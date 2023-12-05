@@ -33,7 +33,7 @@ jobs:
       uses: actions/setup-docker@v2
       with:
         dockerfile: ./Dockerfile
-        container-name: app-container
+        container-name: github-action
 
     - name: Build and Push Docker Image
       run: |
