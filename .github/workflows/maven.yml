@@ -38,7 +38,6 @@ jobs:
         docker buildx build --platform linux/amd64,linux/arm64 -t maheshmule/dockerdemo:latest -f Dockerfile .
         docker push maheshmule/dockerdemo:latest
       env:
-        DOCKER_CLI_ACI=1
-        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-        DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
